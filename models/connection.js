@@ -12,5 +12,3 @@ mongoose.connection
 
 //EXPORT
 module.exports = mongoose;
-
-//https://turmeric.seircohort.com/full-stack-development/week-10/day-1/lecture/
