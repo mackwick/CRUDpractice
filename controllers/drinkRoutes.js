@@ -21,6 +21,14 @@ router.get("/", async (req, res) => {
 //update
 
 //create
+router.post("/", async (req, res) => {
+  try {
+    const drink = await Drink.create(req.body);
+    res.json(drink);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 //edit
 

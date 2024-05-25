@@ -10,6 +10,7 @@ const app = express();
 //MIDDLEWARE
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use("/drinks", DrinkRouter);
 
 //ROOT ROUTE
