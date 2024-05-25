@@ -7,8 +7,11 @@ const router = express.Router();
 //ROUTES
 //index
 router.get("/", async (req, res) => {
-  const drinks = await Drink.find({});
-  res.send(drinks);
+  try {
+    res.json(await Drink.find({}));
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 //new
@@ -18,13 +21,17 @@ router.get("/", async (req, res) => {
 //update
 
 //create
-router.post("/", async (req, res) => {
-  const newDrink = await Drink.create(req.body);
-  res.redirect("/drinks");
-});
 
 //edit
 
 //show
+router.get("/:id", async (req, res) => {
+  try {
+    const drink = await Drink.findById(req.params.id);
+    res.json(drink);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;
