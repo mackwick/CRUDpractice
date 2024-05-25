@@ -3,12 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
+const DrinkRouter = require("./controllers/drinkRoutes");
 
 const app = express();
 
 //MIDDLEWARE
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use("/drinks", DrinkRouter);
 
-//ROUTES
+//ROOT ROUTE
 app.get("/", (req, res) => {
   res.send("<h1>Here's the root</h1>");
 });
