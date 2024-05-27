@@ -14,11 +14,23 @@ router.get("/", async (req, res) => {
   }
 });
 
-//new
-
 //delete
+router.delete("/:id", async (req, res) => {
+  try {
+    res.json(await Drink.findByIdAndDelete(req.params.id));
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 //update
+router.put("/:id", async (req, res) => {
+  try {
+    res.json(await Drink.findByIdAndUpdate(req.params.id, req.body));
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 //create
 router.post("/", async (req, res) => {
@@ -29,8 +41,6 @@ router.post("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
-
-//edit
 
 //show
 router.get("/:id", async (req, res) => {
